@@ -22,11 +22,11 @@ The backend code is highly abstracted. The abstraction folder will tell you how 
 
 Because it's so abstracted, there is sometimes not very much code in the inheriting entities' code files, but rest assured, things are happening. Hopefully, the non-complexity of the inheriting entities' code is enough that the code is self-explanatory. When in doubt, see the base class.
 
-## The DB - This information is outdated.
+## The DB - This information is up-to-date (as of the FA24/SP25 team).
 
 Here's the breakdown of the current schema. The image is low quality because Miro won't let us download higher resolutions for free, so, sorry in advance.
 
-![DB-Schema](./docs/schema.jpg)
+![DB-Schema](./docs/schema.drawio.png)
 
 What the entities are for:
 1. Request: Patrons create a need for Gardeners to fill.
@@ -39,6 +39,8 @@ What the entities are for:
 8. Location: Where something is (an address). Particularly where a Request came from and where a Delivery should go.
 9. Food Bank Admin: A User who works with a Food Bank directly, overseeing the movement of food.
 10. Produce Name: Aliases for the names of Produce (corn is also called maize, etc).
+11. User Badge: Helps award badges to users.
+12. Badge: Contains the information related to Badges like the images associated with it, the descripion, and name.
 
 ## The Libraries
 
