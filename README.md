@@ -6,6 +6,8 @@
 
 ## Getting Started
 
+NOTE: Some of this information may be a bit outdated. The FA23/SP24 team wrote out all of this information for the FA24/SP25 team to use. In order to give any adopters of our code as much information as possible, we decided to leave all of the information here. If you want more information, please check out "The Big Open Sourcing Doc" in the frontend's repository.
+
 Docker is the much-preferred way to begin setting up PeoriaFresh. This is because it most closely resembles the way it will be run in the production environment, but also because it offers a very easy way to install the development environment on your machine. 
 
 Docker Desktop is an application that gives Docker containers a fancy UI that makes life much easier than the traditional command line. It also gives a fantastic way to easily get complex code like PeoriaFresh running, called DevEnvironments.
@@ -20,7 +22,7 @@ The backend code is highly abstracted. The abstraction folder will tell you how 
 
 Because it's so abstracted, there is sometimes not very much code in the inheriting entities' code files, but rest assured, things are happening. Hopefully, the non-complexity of the inheriting entities' code is enough that the code is self-explanatory. When in doubt, see the base class.
 
-## The DB
+## The DB - This information is outdated.
 
 Here's the breakdown of the current schema. The image is low quality because Miro won't let us download higher resolutions for free, so, sorry in advance.
 
@@ -144,10 +146,10 @@ The problem arises from the fact that there's no way for the backend to figure o
 
 ## // TODO
 
-Well, we didn't quite get everything implemented. We had a year, but it was a full year. The remaining functionality that we missed was:
+We (the 24/25 group) weren't able to get everything we wanted to implement into the current version of Peoria Fresh, but you might be able to!
 
-1. Front-end ability to manage FBAs from a root FBA account.
+1. Front-end ability to manage FBAs (food bank admins) from a root FBA account.
 2. Ability to send preset encouraging messages or thank yous between Gardeners and Patrons via the FBAs
-3. Leaderboard-like functionality to show the community activity of what's getting delivered where.
 4. Translation options outside of Google Translate. We found out the hard way that not everyone speaks and reads English. I'm envisioning a new table with language-word pairs linked to a produce, but that's just me.
-5. Adding a Gardener profile from an existing FBA user.
+5. Team functionality for the leaderboard
+6. Rewards Page (frontend)
