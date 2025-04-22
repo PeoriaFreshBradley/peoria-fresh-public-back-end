@@ -1,0 +1,52 @@
+import { MigrationInterface, QueryRunner } from "typeorm"
+
+export class Badges1743628137764 implements MigrationInterface {
+
+    public async up(queryRunner: QueryRunner): Promise<void> {
+
+        await queryRunner.query('ALTER TABLE \`badge\` DROP COLUMN \`criteria\`'); 
+        await queryRunner.query('ALTER TABLE \`badge\` ADD COLUMN \`lockedImageURL\` VARCHAR(255) NOT NULL AFTER `\imageURL\`'); 
+        await queryRunner.query('ALTER TABLE \`badge\` ADD COLUMN \`badgeType\` ENUM(\'donation\',\'participation\') NOT NULL AFTER \`lockedImageURL\`'); 
+        await queryRunner.query('ALTER TABLE \`user_badge\` CHANGE COLUMN \`awardedAt\` \`createdAt\` DATETIME NOT NULL DEFAULT (now()) AFTER \`badgeId\`');
+        await queryRunner.query('ALTER TABLE \`user_badge\` ADD COLUMN \`updatedAt\` DATETIME NOT NULL DEFAULT (now()) AFTER \`createdAt\`');
+        await queryRunner.query(`
+            INSERT INTO \`badge\` (\`id\`, \`createdAt\`, \`updatedAt\`, \`name\`, \`description\`, \`imageURL\`, \`lockedImageURL\`, \`badgeType\`) VALUES 
+            (1, '2025-03-31 17:19:52.000000', '2025-03-31 17:19:52.000000', 'Top Banana', 'Donate 500oz of Bananas', 'https://storage.googleapis.com/pfresh-assets/images/badges/Top%20Banana.png', 'https://storage.googleapis.com/pfresh-assets/images/badges/Locked%20Top%20Banana.png', 'donation'),
+            (2, '2025-03-31 17:20:50.000000', '2025-03-31 17:20:50.000000', 'Strawberry Sage', 'Donate 40oz of Strawberries', 'https://storage.googleapis.com/pfresh-assets/images/badges/Strawberry%20Sage.png', 'https://storage.googleapis.com/pfresh-assets/images/badges/Locked%20Strawberry%20Sage.png', 'donation'),
+            (3, '2025-03-31 17:21:58.000000', '2025-03-31 17:21:58.000000', 'Peach Princess', 'Donate 265oz of Peaches', 'https://storage.googleapis.com/pfresh-assets/images/badges/Peach%20Princess.png', 'https://storage.googleapis.com/pfresh-assets/images/badges/Locked%20Peach%20Princess.png', 'donation'),
+            (4, '2025-03-31 17:22:48.000000', '2025-03-31 17:22:48.000000', 'Carrot Crusader', 'Donate 225oz of Carrots', 'https://storage.googleapis.com/pfresh-assets/images/badges/Carrot%20Crusader.png', 'https://storage.googleapis.com/pfresh-assets/images/badges/Locked%20Carrot%20Crusader.png', 'donation'),
+            (5, '2025-03-31 17:23:30.000000', '2025-03-31 17:23:30.000000', 'Broccoli Boss', 'Donate 100oz of Broccoli', 'https://storage.googleapis.com/pfresh-assets/images/badges/Broccoli%20Boss.png', 'https://storage.googleapis.com/pfresh-assets/images/badges/Locked%20Broccoli%20Boss.png', 'donation'),
+            (6, '2025-03-31 17:24:21.000000', '2025-03-31 17:24:21.000000', 'Melon Lord', 'Donate 3200oz of Watermelon', 'https://storage.cloud.google.com/pfresh-assets/images/badges/Melon%20Lord.png?authuser=2', 'https://storage.googleapis.com/pfresh-assets/images/badges/Locked%20Melon%20Lord.png', 'donation'),
+            (7, '2025-03-31 17:25:02.000000', '2025-03-31 17:25:02.000000', 'Blueberry Baron', 'Donate 16oz of Blueberries', 'https://storage.googleapis.com/pfresh-assets/images/badges/Blueberry%20Baron.png', 'https://storage.googleapis.com/pfresh-assets/images/badges/Locked%20Blueberry%20Baron.png', 'donation'),
+            (8, '2025-03-31 17:26:22.000000', '2025-03-31 17:26:22.000000', 'Aspiring Asparagus', 'Donate 16oz of Asparagus', 'https://storage.googleapis.com/pfresh-assets/images/badges/Aspiring%20Asparagus.png', 'https://storage.googleapis.com/pfresh-assets/images/badges/Locked%20Aspiring%20Asparagus.png', 'donation'),
+            (9, '2025-03-31 17:27:16.000000', '2025-03-31 17:27:16.000000', 'Bok Champion', 'Donate 160oz of Bok Choy', 'https://storage.googleapis.com/pfresh-assets/images/badges/Bok%20Champion.png', 'https://storage.googleapis.com/pfresh-assets/images/badges/Locked%20Bok%20Champion.png', 'donation'),
+            (10, '2025-03-31 12:27:27.000000', '2025-03-31 17:27:56.000000', 'Cherry Bomb', 'Donate 18oz of Cherries', 'https://storage.googleapis.com/pfresh-assets/images/badges/Cherry%20Bomb.png', 'https://storage.googleapis.com/pfresh-assets/images/badges/Locked%20Cherry%20Bomb.png', 'donation'),
+            (11, '2025-03-31 12:28:05.000000', '2025-03-31 17:29:02.000000', 'Sprite Sipper', 'Donate the same number of Lemons and Limes', 'https://storage.googleapis.com/pfresh-assets/images/badges/Sprite%20Sipper.png', 'https://storage.googleapis.com/pfresh-assets/images/badges/Locked%20Sprite%20Sipper.png', 'donation'),
+            (12, '2025-03-31 12:29:14.000000', '2025-03-31 17:29:40.000000', 'Gracious Grape Giver', 'Donate 18oz of Grapes', 'https://storage.googleapis.com/pfresh-assets/images/badges/Gracious%20Grape%20Giver.png', 'https://storage.googleapis.com/pfresh-assets/images/badges/Locked%20Gracious%20Grape%20Giver.png', 'donation'),
+            (13, '2025-03-31 12:29:48.000000', '2025-03-31 17:30:10.000000', 'Spinach Sultan', 'Donate 9oz of Spinach', 'https://storage.googleapis.com/pfresh-assets/images/badges/Spinach%20Sultan.png', 'https://storage.googleapis.com/pfresh-assets/images/badges/Locked%20Spinach%20Sultan.png', 'donation'),
+            (14, '2025-03-31 12:30:19.000000', '2025-03-31 17:30:43.000000', 'Potato Prince', 'Donate 200oz of Potatoes', 'https://storage.googleapis.com/pfresh-assets/images/badges/Potato%20Prince.png', 'https://storage.googleapis.com/pfresh-assets/images/badges/Locked%20Potato%20Prince.png', 'donation'),
+            (15, '2025-03-31 12:30:50.000000', '2025-03-31 17:31:17.000000', 'Scurvy Free!', 'Donate 138oz of Oranges', 'https://storage.googleapis.com/pfresh-assets/images/badges/Scurvy%20Free.png', 'https://storage.googleapis.com/pfresh-assets/images/badges/Locked%20Scurvy%20Free.png', 'donation'),
+            (16, '2025-03-31 12:31:26.000000', '2025-03-31 17:32:13.000000', 'Pepper Pal', 'Donate 1250oz of Any Pepper', 'https://storage.googleapis.com/pfresh-assets/images/badges/Pepper%20Pal.png', 'https://storage.googleapis.com/pfresh-assets/images/badges/Locked%20Pepper%20Pal.png', 'donation'),
+            (17, '2025-03-31 12:32:21.000000', '2025-03-31 17:32:41.000000', 'Apple Angel', 'Donate 136oz Apples', 'https://storage.googleapis.com/pfresh-assets/images/badges/Apple%20Angel.png', 'https://storage.googleapis.com/pfresh-assets/images/badges/Locked%20Apple%20Angel.png', 'donation'),
+            (18, '2025-03-31 12:32:53.000000', '2025-03-31 17:34:35.000000', '1st Place', 'Placed 1st in Leaderboard in the Previous Season', 'https://storage.googleapis.com/pfresh-assets/images/badges/1st%20Place.png', 'https://storage.googleapis.com/pfresh-assets/images/badges/Locked%201st%20Place.png', 'participation'),
+            (19, '2025-03-31 12:34:52.000000', '2025-03-31 17:35:14.000000', '2nd Place', 'Placed 2nd in Leaderboard in the Previous Season', 'https://storage.googleapis.com/pfresh-assets/images/badges/2nd%20Place.png', 'https://storage.googleapis.com/pfresh-assets/images/badges/Locked%202nd%20Place.png', 'participation'),
+            (20, '2025-03-31 12:35:21.000000', '2025-03-31 17:35:44.000000', '3rd Place', 'Placed 3rd in Leaderboard in the Previous Season', 'https://storage.googleapis.com/pfresh-assets/images/badges/3rd%20Place.png', 'https://storage.googleapis.com/pfresh-assets/images/badges/Locked%203rd%20Place.png', 'participation'),
+            (21, '2025-03-31 12:35:53.000000', '2025-03-31 17:36:17.000000', '4th Place', 'Placed 4th in Leaderboard in the Previous Season', 'https://storage.googleapis.com/pfresh-assets/images/badges/4th%20Place.png', 'https://storage.googleapis.com/pfresh-assets/images/badges/Locked%204th%20Place.png', 'participation'),
+            (22, '2025-03-31 12:36:23.000000', '2025-03-31 17:36:39.000000', '5th Place', 'Placed 5th in Leaderboard in the Previous Season', 'https://storage.googleapis.com/pfresh-assets/images/badges/5th%20Place.png', 'https://storage.googleapis.com/pfresh-assets/images/badges/Locked%205th%20Place.png', 'participation'),
+            (23, '2025-03-31 12:36:52.000000', '2025-03-31 17:37:56.000000', 'Leaderboard Legion', 'Opt In to the Game', 'https://storage.googleapis.com/pfresh-assets/images/badges/Leaderboard%20Legion.png', 'https://storage.googleapis.com/pfresh-assets/images/badges/Locked%20Leaderboard%20Legion.png', 'participation')
+        `);
+
+    }
+
+    public async down(queryRunner: QueryRunner): Promise<void> {
+
+        await queryRunner.query('DELETE FROM \`badge\` WHERE \`id\` BETWEEN 1 AND 23');
+        await queryRunner.query('ALTER TABLE \`badge\` ADD COLUMN \`criteria\` VARCHAR(255) NOT NULL');
+        await queryRunner.query('ALTER TABLE \`badge\` DROP COLUMN \`lockedImageURL\`');
+        await queryRunner.query('ALTER TABLE \`badge\` DROP COLUMN \`badgeType\`')
+        await queryRunner.query('ALTER TABLE \`user_badge\` CHANGE COLUMN \`createdAt\` \`awardedAt\` DATETIME NOT NULL DEFAULT (now()) AFTER \`badgeId\`');
+        await queryRunner.query('ALTER TABLE \`user_badge\` DROP COLUMN \`updatedAt\`'); 
+
+    }
+
+}
