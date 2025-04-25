@@ -155,3 +155,4 @@ We (the 24/25 group) weren't able to get everything we wanted to implement into 
 4. Translation options outside of Google Translate. We found out the hard way that not everyone speaks and reads English. I'm envisioning a new table with language-word pairs linked to a produce, but that's just me.
 5. Team functionality for the leaderboard - We have files in the frontend (src/views/gardener/tbd-teams-folder) and backend (src/team & src/teamuser) that we started to work on but couldn't finish
 6. Rewards Page (frontend)
+7. Create different leaderboards on how big they can grow a vegetable (Suggestion from a gardener who watched our Capstone Presentation)
