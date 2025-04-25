@@ -153,5 +153,5 @@ We (the 24/25 group) weren't able to get everything we wanted to implement into 
 1. Front-end ability to manage FBAs (food bank admins) from a root FBA account.
 2. Ability to send preset encouraging messages or thank yous between Gardeners and Patrons via the FBAs
 4. Translation options outside of Google Translate. We found out the hard way that not everyone speaks and reads English. I'm envisioning a new table with language-word pairs linked to a produce, but that's just me.
-5. Team functionality for the leaderboard
+5. Team functionality for the leaderboard - We have files in the frontend (src/views/gardener/tbd-teams-folder) and backend (src/team & src/teamuser) that we started to work on but couldn't finish
 6. Rewards Page (frontend)
