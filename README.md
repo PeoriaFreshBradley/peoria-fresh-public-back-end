@@ -6,7 +6,7 @@
 
 ## Getting Started
 
-NOTE: Some of this information may be a bit outdated. The FA23/SP24 team wrote out all of this information for the FA24/SP25 team to use. In order to give any adopters of our code as much information as possible, we decided to leave all of the information here. If you want more information, please check out "The Big Open Sourcing Doc" in the frontend's repository.
+NOTE: Some of this information may be a bit outdated. The FA23/SP24 team wrote out all of this information for the FA24/SP25 team to use. In order to give any adopters of our code as much information as possible, we decided to leave all of the information here. If you want more information, please check out the "Peoria Fresh - Open Sourcing Tutorial" file in the "Open-Source-Help" folder in the frontend's repository. 
 
 Docker is the much-preferred way to begin setting up PeoriaFresh. This is because it most closely resembles the way it will be run in the production environment, but also because it offers a very easy way to install the development environment on your machine. 
 
